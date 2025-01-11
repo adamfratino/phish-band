@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
+import { ViewTransitions } from "next-view-transitions";
 
 import { supabase } from "@/utils/supabase/client";
 
@@ -32,15 +33,17 @@ export default async function RootLayout({
   const { created_at } = data[0];
 
   return (
-    <html lang="en">
-      <body className="antialiased py-4 px-8 bg-background h-[100dvh] w-screen flex flex-col items-center justify-center">
-        {children}
-        <GoHomeLink />
-        <LoginLink />
-        <BlueskyLink />
-        <LastUpdate createdAt={created_at} />
-        <Analytics />
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className="antialiased py-4 px-8 bg-background h-[100dvh] w-screen flex flex-col items-center justify-center">
+          {children}
+          <GoHomeLink />
+          <LoginLink />
+          <BlueskyLink />
+          <LastUpdate createdAt={created_at} />
+          <Analytics />
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

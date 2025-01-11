@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -37,19 +37,27 @@ export const MessageForm = () => {
 
   if (hasSubmitted) {
     return (
-      <div className="flex flex-col gap-2 w-full max-w-md font-bold items-center uppercase">
-        <h1 className="text-4xl mb-2 text-center font-bold tracking-tight">
-          congrats, you did it!
+      <div className="flex flex-col gap-4 w-full max-w-md font-bold text-balance">
+        <div className="flex gap-3 items-center">
+          <div className="size-2 rounded-full bg-[mediumseagreen] animate-pulse outline outline-2 outline-[mediumseagreen] outline-offset-2" />
+          <span className="text-xs text-[mediumseagreen]">Processing...</span>
+        </div>
+        <h1 className="text-2xl mb-2 font-bold tracking-tight">
+          Your post has been submitted!
         </h1>
-        <h2 className="text-xs mb-6">
-          it&apos;ll take a few moments to rebuild the site
-        </h2>
-        <Link
-          href="/"
-          className="text-[mediumseagreen] underline hover:no-underline"
-        >
-          go back to see if it&apos;s updated
-        </Link>
+        <p className="text-xs">
+          It&apos;ll take a few moments to update our database. Once that&apos;s
+          done, your new post will be visible on the{" "}
+          <Link href="/">homepage</Link>.
+        </p>
+        <p className="text-xs">
+          In the meantime, head on over to our{" "}
+          <a href="https://bsky.app/profile/phish.band" target="_blank">
+            Bluesky
+          </a>
+          , where your post should already be live.
+        </p>
+        <DownArrowSvg className="self-center size-4 fixed bottom-20 fill-white animate-bounce" />
       </div>
     );
   }
@@ -98,3 +106,20 @@ export const MessageForm = () => {
     </>
   );
 };
+
+const DownArrowSvg = ({ ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M15 6v6h4l-7 7-7-7h4V6h6z" />
+  </svg>
+);

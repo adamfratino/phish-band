@@ -14,7 +14,9 @@ export const Message = ({
   <div className="flex flex-col items-center hover:opacity-80 transition-opacity">
     <ConditionalWrapper
       condition={Boolean(link)}
-      wrapper={<a href={link} target="_blank" className="contents" />}
+      wrapper={
+        <a href={link} target="_blank" className="contents text-inherit" />
+      }
     >
       <h1 className="text-3xl md:text-4xl mb-3 text-center">{bigText}</h1>
       <h2 className="text-xs">{smallText}</h2>

@@ -5,10 +5,19 @@
 :root {
   --foreground: #ffffff;
   --background: #000;
+  --primary: mediumseagreen;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Helvetica, sans-serif;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
 }
