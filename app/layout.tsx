@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ViewTransitions } from "next-view-transitions";
 
 import { supabase } from "@/utils/supabase/client";
@@ -10,6 +10,12 @@ import { GoHomeLink } from "@/components/GoHomeLink";
 import { BlueskyLink } from "@/components/BlueskyLink";
 
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width, shrink-to-fit=no",
+  minimumScale: 1,
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Love & Light Motherfuckers",

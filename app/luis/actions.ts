@@ -8,7 +8,7 @@ export async function auth(formData: FormData) {
   const shouldAuthenticate =
     formData.get("password") == process.env.IRON_SESSION_PASSWORD!;
 
-  const redirectPath = (formData.get("redirect") as string) || "/";
+  const redirectPath = (formData.get("redirect") as string) || "/rackem";
 
   session.isAuthenticated = shouldAuthenticate;
 
